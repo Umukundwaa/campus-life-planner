@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Campus Life Planner</title>
+    <link rel="icon" href="images/campus favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <!--header-->
+    <header class="dashboard-header">
+        <div class="logo">
+            <img src="images/logo.jpeg" alt="Campus Life Planner Logo" width="50">
+            <h1>Campus Lifer Planner</h1>
+        </div>
+        <div class="user-info ">    
+            <p id="welcome-msg">Welcome, <span id="usernameDisplay">User</span></p>
+            <p id="emailDisplay">Email: <span id="emailDisplaySpan">user@example.com</span></p>
+            <button id="homebtn">Home</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </header>
+    <!--mini dashboard / stats-->
+    <section class="mini-dashboard">
+        <div class="stat" id="totalTasksStat">
+            <h3>Total Tasks</h3>
+            <p id="totalTasks">0</p>
+        </div>
+        <div class="stat" id="upcomingEventStat">
+            <h3>Upcoming Event</h3>
+            <p id="upcomingEvent">None</p>
+        </div>
+        <div class="stat" id="completedTasksStat">
+            <h3>Completed Tasks</h3>
+            <p id="completedTasks">0</p>
+        </div>
+        <div class="stat" id="moodSummaryStat">
+            <h3>Mood Tags</h3>
+            <p id="moodSummary">😊</p>
+        </div>
+    </section>
+    <!--toggle add new task form-->
+    <section class="add-task-toogle">
+        <button id="showAddTaskBtn">+ Add New Task/Event</button>
+    </section>
+
+    <!--add new task form (hidden)-->
+    <section class="add-task" id="addTaskSection" style="display: none;">
+        <h2>Add New Task/ Event</h2>
+        <form method="post" id="taskform">
+            <input type="text" id ="taskTitle" name="taskTitle" placeholder="Task Title" required>
+            <input type="date" id="taskDate" name="taskDate" required>
+            <input type="number" id="taskTime" name="taskTime" placeholder="Duration (minutes)" required>
+            <select id="moodTag" name="moodTag" required>
+                <option value="" disabled selected>Select Mood</option>
+                <option value="happy">😊 Happy</option>
+                <option value="stressed">😰 Stressed</option>
+                <option value="productive">💪 Productive</option>
+                <option value="tired">😴 Tired</option>
+                <option value="excited">🤩 Excited</option>
+                <option value="neutral">😐 Neutral</option>
+            </select>
+            <button type="submit" id="addTaskBtn">Add Task</button>
+        </form>
+    </section>
+    <!--Task list-->
+  <section class="tasks-list">
+    <h2>Your Tasks /Events</h2>
+    <table>
+        <thead>
+            <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Duration (mins)</th>
+            <th>Mood</th>
+            <th>Status</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tasksTableBody">
+            <!-- Tasks will be dynamically inserted here -->
+        </tbody>
+    </table>
+  </section>
+  <script type="module" src="dashboard.js"></script>
+  <script type="module" src="scripts/storage.js"></script>
+</body>
+</html>
