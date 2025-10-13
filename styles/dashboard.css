@@ -1,0 +1,226 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: hsl(210, 36%, 96%);
+    color:hsl(0, 0%, 20%);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+.dashboard-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: hsl(219, 100%, 65%);
+    color:hsl(0, 0%, 100%);
+    padding: 15px 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.dashboard-header .logo h1{
+    font-size: 1.5rem;
+    margin-left:10px;
+    font-style: italic;
+} 
+.dashboard-header .logo{
+    display: flex;
+}
+.dashboard-header .logo img{
+    height:40px;
+    width:40px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    opacity: 0.75;
+}
+.dashboard-header .user-info p{
+    margin-left: 5px 0;
+}
+.dashboard-header button{
+    background: hsl(0, 0%, 100%);
+    color: hsl(219, 100%, 65%);
+    border: none;
+    padding:7px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.dashboard-header button:hover{
+    background: hsl(217, 100%, 93%);
+    transition: all 0.3s ease;
+    transform: scale(1.05);
+    color: hsla(219, 100%, 50%, 0.925);
+}
+.mini-dashboard{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.stat{
+    background:hsl(0, 0%, 100%);
+    flex:1 1 200px;
+    padding: 15px 20px;
+    border-radius:12px;
+    text-align: center;
+    box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.1);
+    transition:transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.stat:hover{
+    transform:translateY(-5px);
+    box-shadow: 0 6px 15px hsla(0, 0%, 0%, 0.15);
+}
+.stat h3{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.dashboard-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.dashboard-buttons button{
+    background: hsl(219, 100%, 65%);
+    color :hsl(0, 0%, 100%);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0px 5px 8px hsla(0, 0%, 0%, 0.1);
+}
+.dashboard-buttons button:hover{
+    background: hsl(218, 59%, 51%);
+    box-shadow: 0px 8px 12px hsla(0, 0%, 0%, 0.15);
+}
+#addTaskSection{
+    background: hsl(0, 0%, 100%);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px hsla(0, 0%, 0%, 0.1);
+}
+#addTaskSection h2{
+    text-align: center;
+    margin-bottom: 15px;
+    color: hsl(219, 100%, 65%);
+}
+#taskForm input, #taskForm select, #taskForm button{
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 10px 0;
+    border: 1px solid hsl(0, 0%, 80%);
+    font-size: 1rem;
+    border-radius: 8px;
+}
+#taskForm input:focus, #taskForm select:focus{
+    outline: none;
+    border-color: hsl(219, 100%, 65%);
+    box-shadow: 0 0 5px hsl(219, 100%, 65%);
+}
+#taskForm button{
+    background: hsl(219, 100%, 65%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+#taskForm button:hover{
+    background:hsl(218, 59%, 51%);
+}
+.task-list,.completed-section{
+    margin:20px;
+    overflow-x: auto;
+    display: none;
+}
+.task-list table, .completed-section table{
+    width:100%;
+    border-collapse: collapse;
+    background: hsl(0, 0%, 100%);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px hsla(0, 0%, 0%, 0.1);
+}
+.task-list th, .completed-section th{
+    background: hsl(219, 100%, 65%);
+    color: hsl(0, 0%, 100%);
+}
+.task-list th, .task-list td, 
+.completed-section th, .completed-section td{ 
+    padding: 12px;
+    text-align: center;
+}
+.task-list tr:nth-child(even), .completed-section tr:nth-child(even){
+    background: hsl(216, 45%, 98%);
+}
+.task-list tr:hover, .completed-section tr:hover{
+    background: hsl(210, 100%, 94%);
+    transition: background 0.3s ease;
+
+}
+.task-list button, .completed-section button{
+    background: hsl(147, 57%, 56%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size:0.9rem;
+    transition: all 0.3s ease;
+}
+.task-list button:hover, .completed-section button:hover{
+    background:hsl(146, 53%, 49%);
+}
+.hidden{
+    display: none;
+}
+#homebtn{
+    background: hsl(0, 0%, 100%);
+    color: hsl(219, 100%, 65%);
+    border: none;
+    padding:7px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 5px;
+}
+#homebtn:hover{
+    background: hsl(217, 100%, 93%);
+    transition: all 0.3s ease;
+    transform: scale(1.05);
+    color: hsla(219, 100%, 50%, 0.925);
+}
+/* Responsive Design */
+@media (max-width:768px){
+    .mini-dashboard{
+        flex-direction: column;
+        align-items: center;
+    }
+    .dashboard-header{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dashboard-header .user-info{
+        margin-top: 10px;
+        align-items: flex-start;
+    }
+    .dashboard-buttons{
+        flex-direction: column;
+        width: 100%;
+    }
+    .dashboard-buttons button{
+        width: 100%;
+        margin: 5px auto;
+    }
+}
