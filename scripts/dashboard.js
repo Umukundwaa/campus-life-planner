@@ -27,7 +27,6 @@ const completedTasksBody = document.getElementById('completedTasksBody');
 
 const logoutBtn = document.getElementById('logout-btn');
 const homeBtn = document.getElementById('homebtn');
-const logo = document.querySelector('.logo h1');
 
 // current user session
 const currentUser = getCurrentUser();
@@ -92,7 +91,7 @@ function renderDashboard(){
 // update stats
     totalTasksStat.textContent = tasks.length;
     completedTasksStat.textContent = completedCount;
-    upcomingEventsStas.texContent = upcoming ? `${upcoming.title} on ${upcoming.date}` : 'No upcoming tasks';
+    upcomingEventsStat.texContent = upcoming ? `${upcoming.title} on ${upcoming.date}` : 'No upcoming tasks';
     moodSummary.texContent =
      Object.entries(moodCounts)
      .map(([mood, count]) => `${mood}: ${count}`)
@@ -188,5 +187,5 @@ function renderDashboard(){
     addTaskSection.style.display = "none"; 
  });
  // logo h1 (reload landing page)
- 
+
 });
