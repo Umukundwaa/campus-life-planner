@@ -186,6 +186,5 @@ function renderDashboard(){
     completedSection.style.display ="none";
     addTaskSection.style.display = "none"; 
  });
- // logo h1 (reload landing page)
 
 });
