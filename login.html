@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Campus Life Planner</title>
+    <link rel="icon" href="images/campus favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2> Login</h2>
+    
+        <form method="post" id ="login_form">
+            <input type="email" id="email" name="email" placeholder="Email">
+            <input type="password" id="password" name="password" placeholder="********">
+            <button type="submit" class="btn" id="submit">login</button>
+           <div class="sign-link">
+            <p>Dont have an account? <a href="signup.html">Sign Up</a></p>
+           </div>
+        </form>
+    </div>
+    <script type="module" src="scripts/validators.js"></script>
+    <script type="module" src="scripts/storage.js"></script>
+    <script type="module" src="scripts/login.js"></script>
+</body>
+</html>

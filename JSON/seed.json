@@ -1,0 +1,178 @@
+{
+  "users": [
+    {
+      "username": "Ange Umukundwa",
+      "email": "angeumukundwa47@gmail.com",
+      "password": "Angel123456789.",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Finish JavaScript Assignment",
+          "description": "Work on regex validation and seed data setup.",
+          "duration": 45,
+          "completed": true,
+          "createdAt": "2025-10-10T08:30:00Z"
+        },
+        {
+          "id": 2,
+          "title": "Prepare Campus Life Presentation",
+          "description": "Review slides about weekly engagement tracking.",
+          "duration": 30,
+          "completed": false,
+          "createdAt": "2025-10-14T10:00:00Z"
+        },
+        {
+          "id": 3,
+          "title": "Team Meeting – Dashboard UI",
+          "description": "Discuss how to improve chart layout and interactivity.",
+          "duration": 60,
+          "completed": true,
+          "createdAt": "2025-10-08T14:15:00Z"
+        },
+        {
+          "id": 4,
+          "title": "Read AI Ethics Article",
+          "description": "Understand the impact of technology on learning equality.",
+          "duration": 25,
+          "completed": false,
+          "createdAt": "2025-10-12T09:45:00Z"
+        },
+        {
+          "id": 5,
+          "title": "Fix Dark Mode Toggle",
+          "description": "Debug CSS and JS for light/dark theme switch.",
+          "duration": 20,
+          "completed": true,
+          "createdAt": "2025-10-15T21:00:00Z"
+        },
+        {
+          "id": 6,
+          "title": "Clean Local Storage",
+          "description": "Remove old test data and reset seed.",
+          "duration": 10,
+          "completed": true,
+          "createdAt": "2025-09-28T18:30:00Z"
+        },
+        {
+          "id": 7,
+          "title": "Design About Us Section",
+          "description": "Add interactive cards for team info.",
+          "duration": 40,
+          "completed": false,
+          "createdAt": "2025-10-11T16:20:00Z"
+        },
+        {
+          "id": 8,
+          "title": "Record Demo Video",
+          "description": "Capture keyboard navigation and regex edge cases.",
+          "duration": 55,
+          "completed": false,
+          "createdAt": "2025-10-16T19:10:00Z"
+        },
+        {
+          "id": 9,
+          "title": "Test Import/Export Feature",
+          "description": "Ensure exported JSON structure matches schema.",
+          "duration": 35,
+          "completed": true,
+          "createdAt": "2025-10-09T11:25:00Z"
+        },
+        {
+          "id": 10,
+          "title": "Review Accessibility",
+          "description": "Check color contrast, focus states, and ARIA labels.",
+          "duration": 50,
+          "completed": false,
+          "createdAt": "2025-10-07T13:50:00Z"
+        }
+      ]
+    },
+{
+      "username": "maria_cyber",
+      "email": "maria.cyber@example.com",
+      "password": "Cyber@2025",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Research Cybersecurity Trends",
+          "description": "Analyze 2025 cyber-attack statistics and new defenses.",
+          "duration": 70,
+          "completed": true,
+          "createdAt": "2025-10-13T10:30:00Z"
+        },
+        {
+          "id": 2,
+          "title": "Update Portfolio Website",
+          "description": "Add projects about ethical hacking and penetration testing.",
+          "duration": 45,
+          "completed": false,
+          "createdAt": "2025-10-09T08:00:00Z"
+        },
+        {
+          "id": 3,
+          "title": "Fix Regex Validation Bug",
+          "description": "Handle edge case with '++' symbols in input.",
+          "duration": 20,
+          "completed": false,
+          "createdAt": "2025-10-16T12:45:00Z"
+        },
+        {
+          "id": 4,
+          "title": "Prepare Python Script Demo",
+          "description": "Showcase automation using Python and shell scripting.",
+          "duration": 50,
+          "completed": true,
+          "createdAt": "2025-09-25T14:10:00Z"
+        },
+        {
+          "id": 5,
+          "title": "Attend Tech Women Meetup",
+          "description": "Participate in women-in-tech empowerment panel.",
+          "duration": 90,
+          "completed": false,
+          "createdAt": "2025-10-17T18:00:00Z"
+        },
+        {
+          "id": 6,
+          "title": "Study Network Protocols",
+          "description": "Understand TCP/IP layers in deep detail.",
+          "duration": 120,
+          "completed": true,
+          "createdAt": "2025-10-05T07:50:00Z"
+        },
+        {
+          "id": 7,
+          "title": "Debug Database Connection",
+          "description": "Resolve MySQL connection issue in Python app.",
+          "duration": 35,
+          "completed": false,
+          "createdAt": "2025-10-15T09:25:00Z"
+        },
+        {
+          "id": 8,
+          "title": "Read 'AI & Security' Journal",
+          "description": "Summarize AI-driven threat detection case study.",
+          "duration": 60,
+          "completed": true,
+          "createdAt": "2025-09-30T16:00:00Z"
+        },
+        {
+          "id": 9,
+          "title": "Prepare for Final Assessment",
+          "description": "Revise JavaScript and data persistence modules.",
+          "duration": 80,
+          "completed": false,
+          "createdAt": "2025-10-18T20:30:00Z"
+        },
+        {
+          "id": 10,
+          "title": "Plan Coding Workshop",
+          "description": "Organize a campus coding bootcamp for beginners.",
+          "duration": 100,
+          "completed": true,
+          "createdAt": "2025-10-01T15:45:00Z"
+        }
+      ]
+    }
+  ]
+}

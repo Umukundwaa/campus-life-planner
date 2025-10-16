@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Campus Life Planner</title>
+    <link rel="icon" href="images/campus favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <!--header-->
+    <header class="dashboard-header">
+        <div class="logo">
+            <img src="images/logo.jpeg" alt="Campus Life Planner Logo" width="50">
+            <h1>Campus Lifer Planner</h1>
+        </div>
+        <div class="user-info ">    
+            <p id="welcome-msg">Welcome, <span id="usernameDisplay">User</span></p>
+            <p id="emailDisplay">Email: <span id="emailDisplayspan">user@example.com</span></p>
+            <button id="homebtn">Home</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </header>
+    <!--mini dashboard / stats-->
+    <section class="mini-dashboard">
+        <div class="stat" id="totalTasksStat">
+            <h3>Total Tasks</h3>
+            <p id="totalTasks">0</p>
+        </div>
+        <div class="stat" id="upcomingEventStat">
+            <h3>Upcoming Event</h3>
+            <p id="upcomingEvent">None</p>
+        </div>
+        <div class="stat" id="completedTasksStat">
+            <h3>Completed Tasks</h3>
+            <p id="completedTasks">0</p>
+        </div>
+        <div class="stat" id="TotalDurationStat">
+            <h3>Duration (minus)</h3>
+            <p id="TotalDuration">0</p>
+        </div>
+         <div class="dashboard-buttons">
+            <button id="addTaskBtn">Add Task/Event</button>
+            <button id="viewTasksBtn">View Tasks</button>
+            <button id="viewCompletedBtn">Completed Tasks</button>
+            <button id="weeklyTrackerBtn">weekly tracker</button>
+            <button id="openSettingsBtn">⚙️ Settings</button>
+        </div>
+    </section>
+    <!--add new task form (hidden)-->
+    <section class="hidden" id="addTaskSection" style="display: none;">
+        <h2>+ Add New Task/ Event</h2>
+        <form method="post" id="taskForm">
+            <input type="text" id ="taskTitle" name="taskTitle" placeholder="Task Title" required>
+            <input type="text" id="description" placeholder="Task Description" required>
+            <input type="date" id="taskDate" name="taskDate" required>
+            <input type="time" id="taskTime" name="taskTime" placeholder="Duration (minutes)" required>
+
+            <button type="submit" id="submitTaskBtn">Add Task</button>
+            <button type="button" id="cancelAddTaskBtn">Cancel</button>
+        </form>
+    </section>
+    <section id="settingsSection" class="hidden" >
+        <h2>⚙️ Settings</h2>
+            <!--Theme mode-->
+
+        <div class="setting-item">
+            <label for="themeMode">Theme Mode:</label>
+            <select  id="themeMode">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+        <!--Data management-->
+        <div class="setting-item">
+            <button type="button"id="export-data">Export Data (JSON) </button>
+            <label class="btn btn-secondary">Import Data (JSON)<input type="file" id="import-data" accept=".json" hidden /></label>
+            <button type="button" class="btn btn-danger" id="clear-data">Clear All Data</button>
+        </div>
+        <!--Default Task Duration-->
+
+        <div class="setting-item">
+            <label for="defaultDuration">Default Task Duration (minutes)</label>
+            <input type="number" id="defaultDuration" min="5" max="180" value="30">
+        </div>
+        <!--notifications -->
+
+        <div class="setting-item">
+             <label for="notification">Enable Notifications:</label>
+             <input type="checkbox"  id="notifications" checked>
+        </div>
+    <!--reset dashboard-->
+    <div class="setting-item">
+        <button id="resetDashboardBtn">Reset Dashboard</button>
+    </div>
+    <button id="closeSettingsBtn">Close</button>
+    <button id="saveSettingsBtn">Save</button>
+    </section>
+    <section class="weekly-stats">
+        <div class="mini-chart-box">
+         <h3>📊 7-Day Task Statistics</h3>
+        <canvas id="weeklyStatsChart" width="50" height="50"></canvas>
+        </div>
+    </section>
+    <!--Tasks list-->
+  <section class="tasks-list hidden"  id="tasksListSection">
+    <h2>📅Your Tasks /Events</h2>
+    <div class="search-container">
+        <label for="searchInput">Search Tasks :</label>
+            <input type="text" id="searchInput" placeholder="e.g., ^Meet or study\b" />
+            <p id="searchError" class="error-message"></p>
+    </div>
+    <table class="tasks-table">
+        <thead>
+            <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Duration (mins)</th>
+            <th>Status</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tasksTableBody">
+            <!-- Tasks will be dynamically inserted here -->
+        </tbody>
+    </table>
+    <button type="button" id="closeTasksListBtn">Close</button>
+  </section>
+  <!--compleleted tasks table-->
+  <section class="completed-section hidden" >
+    <h2>✅Completed Tasks</h2>
+    <div class="search-container">
+        <label for="searchInput">Search Completed Task :</label>
+            <input type="text" id="searchInput" placeholder="e.g., ^Meet or study\b" />
+            <p id="searchError" class="error-message"></p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Duration (mins)</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="completedTasksBody" >
+            <!-- Completed tasks will be dynamically inserted here -->
+        </tbody>
+    </table>
+    <button type="button" id="closeCompletedTasksBtn">Close</button>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="scripts/dashboard.js"></script>
+</body>
+</html>
