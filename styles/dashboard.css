@@ -501,16 +501,12 @@ mark {
     font-size: 0.85rem;
     color: #999;
 }
-
+/*dark mode*/
 body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
 }
 
-body.dark-mode #settings-section {
-    background: #1f1f1f;
-    color: #e0e0e0;
-}
 body.dark-mode .dashboard-header {
     background: #1a1a1a;
     color: #e0e0e0;
@@ -524,15 +520,20 @@ body.dark-mode .dashboard-header button:hover {
     background: #444;
     color: #fff;
 }
-body.dark-mode .stat, body.dark-mode .stat p {
+
+body.dark-mode .stat {
     background: #1e1e1e;
     color: #ffffff;
-    font-weight: bold;
     box-shadow: 0 2px 8px rgba(255,255,255,0.05);
 }
 body.dark-mode .stat:hover {
     box-shadow: 0 6px 15px rgba(255,255,255,0.1);
 }
+body.dark-mode .stat h3,
+body.dark-mode .stat p {
+    color: #e0e0e0;
+}
+
 body.dark-mode .dashboard-buttons button {
     background: #333;
     color: #e0e0e0;
@@ -543,24 +544,107 @@ body.dark-mode .dashboard-buttons button:hover {
     color: #fff;
     box-shadow: 0 5px 10px rgba(255,255,255,0.15);
 }
-body.dark-mode #addTaskSection, body.dark-mode #taskForm input, body.dark-mode #taskForm select, body.dark-mode #taskForm button {
+
+body.dark-mode #addTaskSection,
+body.dark-mode #taskForm input,
+body.dark-mode #taskForm select,
+body.dark-mode #taskForm button {
     background: #1e1e1e;
     color: #e0e0e0;
     border: 1px solid #444;
     box-shadow: 0 2px 10px rgba(255,255,255,0.05);
 }
-body.dark-mode #tasklist table, body.dark-mode .completed-section table {
+body.dark-mode #taskForm input:focus,
+body.dark-mode #taskForm select:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 8px rgba(76,175,80,0.5);
+}
+body.dark-mode .task-list table,
+body.dark-mode .completed-section table {
     background: #1e1e1e;
     color: #e0e0e0;
     box-shadow: 0 2px 10px rgba(255,255,255,0.05);
 }
-body.dark-mode #tasklist th, body.dark-mode .completed-section th {
+body.dark-mode .task-list th,
+body.dark-mode .completed-section th {
     background: #333;
     color: #e0e0e0;
 }
-body.dark-mode #tasklist tr:nth-child(even), body.dark-mode .completed-section tr:nth-child(even) {
+body.dark-mode .task-list tr:nth-child(even),
+body.dark-mode .completed-section tr:nth-child(even) {
     background: #2a2a2a;
 }
+body.dark-mode .task-list tr:hover,
+body.dark-mode .completed-section tr:hover {
+    background: #444;
+}
+body.dark-mode .task-list button,
+body.dark-mode .completed-section button,
+body.dark-mode button.Export-btn {
+    background: #444;
+    color: #e0e0e0;
+}
+body.dark-mode .task-list button:hover,
+body.dark-mode .completed-section button:hover,
+body.dark-mode button.Export-btn:hover {
+    background: #555;
+}
+body.dark-mode .complete-btn {
+    background: #28a745;
+    color: white;
+}
+body.dark-mode .complete-btn:hover {
+    background: #218838;
+}
+body.dark-mode .update-btn {
+    background: #007BFF;
+    color: white;
+}
+body.dark-mode .update-btn:hover {
+    background: #0056b3;
+}
+body.dark-mode .delete-btn {
+    background: #dc3545;
+    color: white;
+}
+body.dark-mode .delete-btn:hover {
+    background: #c82333;
+}
+body.dark-mode .search-container {
+    background: #1e1e1e;
+    border: 1px solid #444;
+    box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+}
+body.dark-mode .search-container:hover {
+    box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+}
+body.dark-mode .search-container label {
+    color: #e0e0e0;
+}
+body.dark-mode #searchInput {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+body.dark-mode #searchInput:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 8px rgba(76,175,80,0.5);
+}
+
+body.dark-mode .mini-chart-box {
+    background: #1e1e1e;
+    border: 1px solid #444;
+}
+body.dark-mode #weeklyStatsChartMini {
+    color: #e0e0e0;
+}
+
+body.dark-mode #settings-section {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    box-shadow: 0 12px 30px rgba(255,255,255,0.3);
+}
+
 @media (max-width: 500px) {
     #settings-section {
         width: 95%;
