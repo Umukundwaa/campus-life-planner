@@ -1,5 +1,5 @@
 import { highlightText, compileRegex } from "./search.js";
-import { getCurrentUser, clearCurrentUser } from "./storage.js";
+import { getCurrentUser, clearCurrentUser ,exportTasks, importTasks} from "./storage.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -164,10 +164,12 @@ if (window.weeklyChart) window.weeklyChart.destroy();
         <td>${task.completed ? "✅Completed" : "⏳Pending"}</td>
         <td>
           ${task.completed
-            ? `<button class="delete-btn" data-index="${index}">Delete</button>`
+            ? `<button class="delete-btn" data-index="${index}">Delete</button>
+            <button class="Export-btn" data-index="${index}">Export</button>`
             : `<button class="complete-btn" data-index="${index}">Mark Done</button>
                <button class="update-btn" data-index="${index}">Update</button>
-               <button class="delete-btn" data-index="${index}">Delete</button>`}
+               <button class="delete-btn" data-index="${index}">Delete</button>
+               <button class="Export-btn" data-index="${index}">Export</button>`}
         </td>
       `;
 
@@ -300,113 +302,101 @@ if (window.weeklyChart) window.weeklyChart.destroy();
     });
   }
   const weeklyStatsCanvas = document.querySelector('.mini-chart-box');
-  // get saved settings
-  const Setting_Key =`settings_${currentUser.email}`;
-  const defaultSettings ={
-    theme: 'light',
-    defaultDuration: 30,
-    Notifications: false
-  };
-  // load user settings
-  function loadSettings(){
-    try{
-      const rw = localStorage.getItem(Setting_Key);
-      return rw ? JSON.parse(rw): {...defaultSettings};
-    }
-    catch(e){
-      return {...defaultSettings};
-    }
-  }
-  let userSettings = loadSettings();
+  //    Settings Section 
 
-  // Apply settings
-  function applySettings(){
-    // apply theme 
-    if (userSettings.theme === 'dark'){
-      document.body.classList.add('dark-mode');
+const Setting_Key = `settings_${currentUser.email}`;
+const exportBtn = document.getElementById('export-data');
+const importInput = document.getElementById('import-data');
+const clearDataBtn = document.getElementById('clear-data');
+
+function loadSettings() {
+    try {
+        const saved = localStorage.getItem(Setting_Key);
+        return saved ? JSON.parse(saved) : {
+            theme: 'light',
+            defaultDuration: 30,
+            notifications: true
+        };
+    } catch (e) {
+        return {
+            theme: 'light',
+            defaultDuration: 30,
+            notifications: true
+        };
     }
-    else{
-      document.body.classList.remove('dark-mode');
-    }
-    document.body.style.transition = "background 0.5s ease, color 0.5s ease";
- window.addEventListener('DOMContentLoaded', () => {
-  const userSettings = JSON.parse(localStorage.getItem('userSettings')) || {};
-  if (userSettings.theme === 'dark') {
-    document.body.classList.add('dark-mode');
-  }
-});
-    // populate inputs
-    if(themeModeSelect) themeModeSelect.value = userSettings.theme || 'light';
-    if(defaultDurationInput) defaultDurationInput.value = userSettings.defaultDuration ?? 30;
-    if(notificationCheckbox) notificationCheckbox.checked = !! userSettings.Notifications;
 }
-    // save settings to local storage
-    function saveSettings(){
-        localStorage.setItem(Setting_Key, JSON.stringify(userSettings));
-    }
-    //theme mode change
-    if(themeModeSelect){
 
-      themeModeSelect.addEventListener("change", (e) => {
-        userSettings.theme = e.target.value;
-        applySettings();
-        saveSettings();
-    });
-    }
-    
-    //default duration change
-    if(defaultDurationInput){
-      defaultDurationInput.addEventListener("input", (e) => {
-        const val = parseInt(e.target.value, 10);
-        if(!Number.isNaN(val)){
-          userSettings.defaultDuration = val;
-          saveSettings();
-        }
-    });
+let userSettings = loadSettings();
 
+// Apply settings
+function applySettings() {
+    // Theme
+    if (userSettings.theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeModeSelect.value = 'dark';
+    } else {
+        document.body.classList.remove('dark-mode');
+        themeModeSelect.value = 'light';
     }
-    //notification toggle
-    if (notificationCheckbox){
-      notificationCheckbox.addEventListener("change", (e) => {
-        userSettings.Notifications = e.target.checked;
-        saveSettings();
-    });
-    }
-    
-    // reset dashboard
-    if(resetDashboardBtn){
-      resetDashboardBtn.addEventListener("click", () => {
+
+    // Default Duration
+    defaultDurationInput.value = userSettings.defaultDuration;
+
+    // Notifications
+    notificationCheckbox.checked = userSettings.notifications;
+}
+
+applySettings();
+
+// Save settings
+saveSettingsBtn.addEventListener('click', () => {
+    userSettings.theme = themeModeSelect.value;
+    userSettings.defaultDuration = parseInt(defaultDurationInput.value, 10);
+    userSettings.notifications = notificationCheckbox.checked;
+
+    localStorage.setItem(Setting_Key, JSON.stringify(userSettings));
+    applySettings();
+    alert("Settings saved successfully!");
+});
+
+// Close settings
+closeSettingsBtn.addEventListener('click', () => {
+    settingsSection.style.display = 'none';
+});
+
+// Reset dashboard
+resetDashboardBtn.addEventListener('click', () => {
+    if (confirm("Are you sure you want to reset all tasks and stats?")) {
         localStorage.removeItem(`tasks_${currentUser.email}`);
-        location.reload();
-    });
+        tasks = [];
+        renderDashboard();
+        alert("Dashboard has been reset!");
     }
-    if(openSettingsBtn){
-      openSettingsBtn.addEventListener("click" , () => {
-        settingsSection.style.display = "block";
-        showSection(settingsSection);
-      });
+});
+// Clear all data
+clearDataBtn.addEventListener('click', () => {
+    if (confirm("Are you sure you want to clear all your tasks?")) {
+        localStorage.removeItem(`tasks_${currentUser.email}`);
+        tasks = [];
+        renderDashboard();
+        alert("All tasks have been cleared!");
     }
+});
 
-    // save button
-    if(saveSettingsBtn){
-      saveSettingsBtn.addEventListener('click', () =>{
-        userSettings.theme = themeModeSelect?.value || userSettings.theme;
-        userSettings.defaultDuration = parseInt(defaultDurationInput?.value || userSettings.defaultDuration, 10);
-        userSettings.Notifications = !! notificationCheckbox?.checked;
-        applySettings();
-        saveSettings();
-        alert("✅Settings saved successfully!");
-       // close settings view
-       renderDashboard();
-       showSection(weeklyStatsCanvas);
-      });
-    }
-    // close settings
-    if(closeSettingsBtn){
-      closeSettingsBtn.addEventListener("click", () => {
-      showSection(weeklyStatsCanvas);
-    });
-    }
+// Export button
+exportBtn.addEventListener('click', () => exportTasks());
+
+// Import file input
+importInput.addEventListener('change', (e) => {
+    if (!e.target.files[0]) return;
+    importTasks(e.target.files[0]);
+    e.target.value = ''; // reset input
+});
+// Open settings
+openSettingsBtn.addEventListener('click', () => {
+    settingsSection.style.display = 'block';
+});
+
     // Show/Hide sections
     function showSection(section) {
     const sections = [addTaskSection, weeklyStatsCanvas,tasksListSection, completedSection,settingsSection];
@@ -430,6 +420,28 @@ if (window.weeklyChart) window.weeklyChart.destroy();
   addTaskBtn.addEventListener("click", () =>{
   showSection(addTaskSection);
  });
+ document.querySelectorAll(".Export-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const index = e.target.dataset.index;
+    const taskToExport = tasks[index];
+    if (!taskToExport) {
+      alert("Task not found!");
+      return;
+    }
+
+    const dataStr = JSON.stringify(taskToExport, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${currentUser.username}_${taskToExport.title}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+
+    alert(`Task "${taskToExport.title}" exported successfully ✅`);
+  });
+});
 
  cancelAddTaskBtn.addEventListener("click", () => {
     addTaskSection.style.display= "none";

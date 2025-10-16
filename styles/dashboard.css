@@ -304,6 +304,14 @@ body{
     cursor: pointer;
     font-size: 12px;
 }
+button.Export-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+button.Export-btn:hover {
+    background-color: #0069d9;
+}
 #homebtn{
     background: hsl(0, 0%, 100%);
     color: hsl(219, 100%, 65%);
@@ -371,7 +379,6 @@ body{
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
-
 mark {
   background-color: #fef08a;
   color: #000;
@@ -385,73 +392,182 @@ mark {
     margin-top: 5px;
     color: hsl(0, 0%, 20%);
 }
+/* --- Dark Mode Settings Section --- */
+#settings-section {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    max-width: 95%;
+    background: #1f1f1f;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    padding: 30px 25px;
+    z-index: 1000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+#settings-section h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+#settings-section label {
+    display: block;
+    margin: 18px 0 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+#settings-section input[type="number"],
+#settings-section select,
+#settings-section input[type="text"],
+#settings-section input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s all;
+}
+
+#settings-section input[type="number"]:focus,
+#settings-section select:focus,
+#settings-section input[type="text"]:focus,
+#settings-section input[type="password"]:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+#settings-section input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #4caf50;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#settings-section button {
+    padding: 12px 22px;
+    margin: 12px 6px 0 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#settings-section button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+}
+#settings-section button.save-settings {
+    background: linear-gradient(145deg, #28a745, #1e7e34);
+    color: #fff;
+}
+
+#settings-section button.close-settings {
+    background: linear-gradient(145deg, #dc3545, #a71d2a);
+    color: #fff;
+}
+
+#settings-section button.reset-dashboard {
+    background: linear-gradient(145deg, #ff9800, #e67e22);
+    color: #fff;
+}
+
+#settings-section button#export-data,
+#settings-section button#clear-data {
+    background: linear-gradient(145deg, #007bff, #0056b3);
+    color: #fff;
+}
+
+#settings-section small {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #999;
+}
+
 body.dark-mode {
-  background-color: #0f0f0f;
-  color: #f2f2f2;
-  transition: background-color 0.4s ease, color 0.4s ease;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode #settings-section {
+    background: #1f1f1f;
+    color: #e0e0e0;
 }
 body.dark-mode .dashboard-header {
-  background: #1f1f1f;
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+    background: #1a1a1a;
+    color: #e0e0e0;
+    box-shadow: 0 2px 6px rgba(255,255,255,0.1);
 }
 body.dark-mode .dashboard-header button {
-  background: #2e2e2e;
-  color: #fff;
+    background: #333;
+    color: #e0e0e0;
 }
 body.dark-mode .dashboard-header button:hover {
-  background: #444;
+    background: #444;
+    color: #fff;
 }
-
-body.dark-mode .stat {
-  background: #1c1c1c;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+body.dark-mode .stat, body.dark-mode .stat p {
+    background: #1e1e1e;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.05);
 }
-body.dark-mode .stat h3 {
-  color: #66aaff;
-}
-body.dark-mode .stat p {
-  color: #f0f0f0;
+body.dark-mode .stat:hover {
+    box-shadow: 0 6px 15px rgba(255,255,255,0.1);
 }
 body.dark-mode .dashboard-buttons button {
-  background: #333;
-  color: #fff;
+    background: #333;
+    color: #e0e0e0;
+    box-shadow: 0px 5px 8px rgba(255,255,255,0.1);
 }
 body.dark-mode .dashboard-buttons button:hover {
-  background: #555;
+    background: #444;
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(255,255,255,0.15);
 }
-body.dark-mode input,
-body.dark-mode select,
-body.dark-mode textarea {
-  background: #222;
-  color: #eee;
-  border: 1px solid #555;
+body.dark-mode #addTaskSection, body.dark-mode #taskForm input, body.dark-mode #taskForm select, body.dark-mode #taskForm button {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    box-shadow: 0 2px 10px rgba(255,255,255,0.05);
 }
-body.dark-mode table {
-  background: #1a1a1a;
-  color: #fff;
-  border-color: #333;
+body.dark-mode #tasklist table, body.dark-mode .completed-section table {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 2px 10px rgba(255,255,255,0.05);
 }
-body.dark-mode th {
-  background: #222;
+body.dark-mode #tasklist th, body.dark-mode .completed-section th {
+    background: #333;
+    color: #e0e0e0;
 }
-body.dark-mode tr:hover {
-  background: #2a2a2a;
+body.dark-mode #tasklist tr:nth-child(even), body.dark-mode .completed-section tr:nth-child(even) {
+    background: #2a2a2a;
+}
+@media (max-width: 500px) {
+    #settings-section {
+        width: 95%;
+        padding: 20px;
+    }
 }
 
-body.dark-mode .mini-chart-box {
-  background: #1a1a1a;
-  border: 1px solid #333;
-}
-
-body.dark-mode #settingsSection {
-  background: #1c1c1c;
-  color: #fff;
-}
-body, section, .stat, button, input, select, textarea {
-  transition: all 0.4s ease;
-}
 /* Responsive Design */
 @media (max-width:768px){
     .mini-dashboard{
