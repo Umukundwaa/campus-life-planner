@@ -11,7 +11,6 @@ if (!localStorage.getItem('users')) {
     })
     .catch(error => console.error('Error loading seed.json:', error));
 }
-
 document.addEventListener('DOMContentLoaded', () => {
 
   // DOM Elements
