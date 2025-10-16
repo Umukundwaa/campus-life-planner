@@ -35,15 +35,16 @@
             <h3>Completed Tasks</h3>
             <p id="completedTasks">0</p>
         </div>
-        <div class="stat" id="moodSummaryStat">
-            <h3>Mood Tags</h3>
-            <p id="moodSummary">😊</p>
+        <div class="stat" id="TotalDurationStat">
+            <h3>Duration (minus)</h3>
+            <p id="TotalDuration">0</p>
         </div>
          <div class="dashboard-buttons">
             <button id="addTaskBtn">Add Task/Event</button>
             <button id="viewTasksBtn">View Tasks</button>
             <button id="viewCompletedBtn">Completed Tasks</button>
-            <button id="moodBtn">Your Mood</button>
+            <button id="weeklyTrackerBtn">weekly tracker</button>
+            <button id="openSettingsBtn">⚙️ Settings</button>
         </div>
     </section>
     <!--add new task form (hidden)-->
@@ -54,18 +55,46 @@
             <input type="text" id="description" placeholder="Task Description" required>
             <input type="date" id="taskDate" name="taskDate" required>
             <input type="time" id="taskTime" name="taskTime" placeholder="Duration (minutes)" required>
-            <select id="moodTag" name="moodTag" required>
-                <option value="" disabled selected>Select Mood</option>
-                <option value="happy">😊 Happy</option>
-                <option value="stressed">😰 Stressed</option>
-                <option value="productive">💪 Productive</option>
-                <option value="tired">😴 Tired</option>
-                <option value="excited">🤩 Excited</option>
-                <option value="neutral">😐 Neutral</option>
-            </select>
+
             <button type="submit" id="submitTaskBtn">Add Task</button>
             <button type="button" id="cancelAddTaskBtn">Cancel</button>
         </form>
+    </section>
+    <section id="settingsSection" class="hidden" >
+        <h2>⚙️ Settings</h2>
+            <!--Theme mode-->
+
+        <div class="setting-item">
+            <label for="themeMode">Theme Mode:</label>
+            <select  id="themeMode">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+        <!--Default Task Duration-->
+
+        <div class="setting-item">
+            <label for="defaultDuration">Default Task Duration (minutes)</label>
+            <input type="number" id="defaultDuration" min="5" max="180" value="30">
+        </div>
+        <!--notifications -->
+
+        <div class="setting-item">
+             <label for="notification">Enable Notifications:</label>
+             <input type="checkbox"  id="notifications" checked>
+        </div>
+    <!--reset dashboard-->
+    <div class="setting-item">
+        <button id="resetDashboardBtn">Reset Dashboard</button>
+    </div>
+    <button id="closeSettingsBtn">Close</button>
+    <button id="saveSettingsBtn">Save</button>
+    </section>
+    <section class="weekly-stats">
+        <div class="mini-chart-box">
+         <h3>📊 7-Day Task Statistics</h3>
+        <canvas id="weeklyStatsChart" width="50" height="50"></canvas>
+        </div>
     </section>
     <!--Tasks list-->
   <section class="tasks-list hidden"  id="tasksListSection">
@@ -82,7 +111,6 @@
             <th>Description</th>
             <th>Date</th>
             <th>Duration (mins)</th>
-            <th>Mood</th>
             <th>Status</th>
             <th>Actions</th>
             </tr>
@@ -96,6 +124,11 @@
   <!--compleleted tasks table-->
   <section class="completed-section hidden" >
     <h2>✅Completed Tasks</h2>
+    <div class="search-container">
+        <label for="searchInput">Search Completed Task :</label>
+            <input type="text" id="searchInput" placeholder="e.g., ^Meet or study\b" />
+            <p id="searchError" class="error-message"></p>
+    </div>
     <table>
         <thead>
             <tr>
@@ -103,7 +136,6 @@
                 <th>Description</th>
                 <th>Date</th>
                 <th>Duration (mins)</th>
-                <th>Mood</th>
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
@@ -114,7 +146,7 @@
     </table>
     <button type="button" id="closeCompletedTasksBtn">Close</button>
   </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script type="module" src="scripts/dashboard.js"></script>
-  <script type="module" src="scripts/storage.js"></script>
 </body>
 </html>
