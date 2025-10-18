@@ -141,7 +141,7 @@ Logout clears current session and redirects to login.
 
 Clone the repo:
 
-git clone <your-repo-url>
+git clone https://github.com/Umukundwaa/campus-life-planner.git
 
 
 Navigate to the project folder:
@@ -174,7 +174,12 @@ Regex search edge cases
 
 Import/export JSON functionality
 
-link: 
+link: https://www.loom.com/share/88fb9be5e61349b5a6dd72cd48014ed3?sid=1df55f1c-2732-46f7-bf6e-0d8627fa4c75
+
+github pages
+
+link:
+https://umukundwaa.github.io/campus-life-planner/
 
 🔧 Notes
 
